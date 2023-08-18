@@ -13,7 +13,7 @@
     {%- set sql_header = config.get('sql_header', none) -%}
 
     {% if unique_key %}
-        {% if unique_key is sequence and unique_key is not mapping and unique_key is not string %}
+        {% if unique_key is sequence and unique_key is not mapping and unique_key is not string and length(unique_key) > 1 %}
             {% for key in unique_key %}
                 {% set this_key_match %}
                     DBT_INTERNAL_SOURCE.{{ key }} = DBT_INTERNAL_DEST.{{ key }}
